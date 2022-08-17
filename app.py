@@ -32,34 +32,43 @@ st.markdown("step 2 : importing the data")
 data_df = pd.read_csv('https://raw.githubusercontent.com/ashish-cell/BADM-211-FA21/main/Data/Credit_Quant.csv')
 st.code("""data_df = pd.read_csv('https://raw.githubusercontent.com/ashish-cell/BADM-211-FA21/main/Data/Credit_Quant.csv')""")
 st.write('The dataframe looks like: ')
-st.dataframe(data_df)
+b1 = st.button('Click here : ')
+if b1:
+    st.dataframe(data_df)
 
 st.markdown("step 3 : Inspect the dataframe")
 st.write("The shape of the dataframe")
 st.code("""data_df.shape""")
-st.write(data_df.shape)
+b2 = st.button('Output 1 : ')
+if b2:
+    st.write(data_df.shape)
 
 st.write("The top ten rows of the dataframe")
 st.code("""data_df.head(10)""")
-st.write(data_df.head(10))
+if st.button('Output 2 :'):
+    st.write(data_df.head(10))
 
 st.write("The bottom ten rows of the dataframe")
 st.code("""data_df.tail(10)""")
-st.write(data_df.tail(10))
+if st.button('Output 3 :'):
+    st.write(data_df.tail(10))
 
 st.write("The columns of the dataframe")
 st.code("""data_df.columns.to_list()""")
-st.write(data_df.columns.to_list())
+if st.button('Output 4 :'):
+    st.write(data_df.columns.to_list())
 
 st.write("The datatypes of the dataframe")
 st.code("""data_df.dtypes""")
 df_types =  pd.DataFrame(data_df.dtypes, columns=['Data Type'])
-st.dataframe(df_types.astype(str))
+if st.button('Output 5 :'):
+    st.dataframe(df_types.astype(str))
 
 st.write("The info() method prints information about the DataFrame. The information contains the number of columns, column labels, column data types, memory usage, range index, and the number of cells in each column (non-null values). Note: the info() method actually prints the info.")
 st.code("""data_df.info()""")
 info = data_df.info()
-st.write("""<class 'pandas.core.frame.DataFrame'>
+if st.button('Output 6 :'):
+    st.write("""<class 'pandas.core.frame.DataFrame'>
 RangeIndex: 310 entries, 0 to 309
 Data columns (total 11 columns):
      Column             Non-Null Count  Dtype  
@@ -84,7 +93,8 @@ data_df.columns = new_names
 st.code("""new_names = [s.strip().replace(' ', '_') for s in data_df.columns]
 data_df.columns = new_names
 data_df.columns""")
-st.write("""Index(['Personal_Income', 'Credit_Limit', 'Credit_Rating', 'Number_of_Cards',
+if st.button('Output 7 :'):
+    st.write("""Index(['Personal_Income', 'Credit_Limit', 'Credit_Rating', 'Number_of_Cards',
        'Age', 'Education_Years', 'Gender', 'Student', 'Married', 'Ethnicity',
        'Credit_Balance'],
       dtype='object')""")
@@ -96,7 +106,8 @@ df
 st.code("""d = {'animal type ': ['dog', 'cat', 'bird'],'age in years': [1, 2, 3],'size':['6', '8', '10'],'city of residence': ['miami', 'chicago', 'london']}
 df = pd.DataFrame(data = d)
 df""")
-st.write(df)
+if st.button('Output 8 :'):
+    st.write(df)
 
 st.markdown("""Accessing subsets of the data
 Pandas uses two methods to access rows and columns in a data frame: loc and iloc. DataCamp discussed both methods. Let's practice them here.
@@ -107,25 +118,30 @@ Remember, Python uses 0-indexing, which means that indices start at 0 and not at
 
 Let's show the first four rows of the data frame. First we'll do it using loc, then using iloc.""")
 st.code("""data_df.loc[0:3]  # for loc, the second index in the slice is inclusive """)
-st.write(data_df.loc[0:3])
+if st.button('Output 9 :'):  
+    st.write(data_df.loc[0:3])
 
 st.markdown("using iloc()")
 st.code("""data_df.iloc[0:4]""")
-st.write(data_df.iloc[0:4])
+if st.button('Output 10 :'):
+    st.write(data_df.iloc[0:4])
 
 st.markdown("show the first ten rows of the first column. Notice that we can do this using either dot notation or bracket notation,")
 st.code("""data_df['Personal_Income'].iloc[0:10]
 
 """)
-st.write(data_df['Personal_Income'].iloc[0:10])
+if st.button('Output 11 :'):
+    st.write(data_df['Personal_Income'].iloc[0:10])
 
 st.markdown("Step 5 : Descriptive statistics.Use the describe method to print a number of common statistics. Below, apply it to a single column..")
 st.code("""data_df['Personal_Income'].describe()""")
-st.write(data_df['Personal_Income'].describe())
+if st.button('Output 12 :'):
+    st.write(data_df['Personal_Income'].describe())
 
 st.markdown("Now apply it to an entire dataframe. Note that when applying it the entire dataframe, it will only display results for numeric variables.")
 st.code("""data_df.describe()""")
-st.write(data_df.describe())
+if st.button('Output 13 :'):
+    st.write(data_df.describe())
 
 st.markdown("""Dummy Coding in Python
 
@@ -141,7 +157,8 @@ st.code("""data_df = pd.get_dummies(data_df, prefix_sep='_', drop_first=True)
 data_df.columns""")
 data_df = pd.get_dummies(data_df, prefix_sep='_', drop_first=True)
 
-st.write(data_df.columns)
+if st.button('Output 14 :'):
+    st.write(data_df.columns)
 
 st.markdown("""Split predictors and outcome variable.
 In Python, before modeling we need to spearate the predictor and outcome variables. All the predictors are kept as a dataframe "X" and the outcome variable as a Pandas Series "y".
@@ -169,26 +186,31 @@ from sklearn.model_selection import train_test_split
 
 train_X, test_X, train_y, test_y = train_test_split(X, y, test_size=0.40, random_state=12)
 
-st.write('Training   : ', train_X.shape)
-st.write('Validation : ', test_X.shape)
+if st.button('Output 15 :'):
+    st.write('Training   : ', train_X.shape)
+    st.write('Validation : ', test_X.shape)
 
 
 
 st.markdown("train_X:")
 st.code("train_X")
-st.write(train_X)
+if st.button('Output 16 :'):
+    st.write(train_X)
 
 st.markdown("test_X:")
 st.code("test_X")
-st.write(test_X)
+if st.button('Output 17 :'):
+    st.write(test_X)
 
 st.markdown("train_y:")
 st.code("train_y")
-st.write(train_y)
+if st.button('Output 18 :'):
+    st.write(train_y)
 
 st.markdown("test_y:")
 st.code("test_y")
-st.write(test_y)
+if st.button('Output 19 :'):
+    st.write(test_y)
 
 st.markdown("""Step 6 : Create a linear regression model
 Now, let's run a linear regression. We do this in two steps. 1) Load the linear regression algorithm into a model called model_lm 2) Fit the linear regression algorithm object to the training data, using the fit method, thus creating a model.""")
@@ -206,7 +228,8 @@ model_lm = LinearRegression()  # This fucntion LinearRegression() is called from
 
 # Step 2
 model_lm.fit(train_X, train_y) # This step is known as model fitting. To fit the model, you supply two arguments the set of predictors and the outcome variable from the trainign dataset
-st.write(model_lm)
+if st.button('Output 20 :'):
+    st.write(model_lm)
 
 st.markdown("We can print the coefficients in the model:")
 st.code("""print('intercept:', model_lm.intercept_) # 
@@ -217,7 +240,9 @@ print('intercept:', model_lm.intercept_) #
 # print('slope:', model_lm.coef_)
 
 print(pd.DataFrame({"variable_name": train_X.columns, "slope": model_lm.coef_}))
-st.write(pd.DataFrame({"variable_name": train_X.columns, "slope": model_lm.coef_}))
+
+if st.button('Output 21 :'):
+    st.write(pd.DataFrame({"variable_name": train_X.columns, "slope": model_lm.coef_}))
 
 st.markdown("""step 7: Check the performance results
 Now let's check how well our model performed. What does this mean? We want to see how effective our model is at predicting the outcome variable for a new set of data. We do this by applying it to the test data.
@@ -228,12 +253,14 @@ regressionSummary(test_y, model_lm.predict(test_X))""")
 
 summary = pd.DataFrame(regressionSummary(test_y, model_lm.predict(test_X)))
 
-st.write("""Regression statistics
+if st.button('Output 22 :'):
+    st.write("""Regression statistics
 
                       Mean Error (ME) : 0.8009
        Root Mean Squared Error (RMSE) : 9.9218
             Mean Absolute Error (MAE) : 7.9308
           Mean Percentage Error (MPE) : 1.3929
 Mean Absolute Percentage Error (MAPE) : 3.6940""")
+
 
 
